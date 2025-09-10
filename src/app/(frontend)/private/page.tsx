@@ -21,6 +21,8 @@ const options = { next: { revalidate: 0 } };
 export default async function PrivatePage() {
     const posts = await client.fetch<PostWithVideo[]>(POSTS_QUERY, {}, options);
 
+    console.log(posts)
+
     return (
        <div className="relative w-screen h-screen">
             {/* <h1 className="absolute top-10 mx-auto text-4xl uppercase trackingg-wide">whereisuzi?</h1> */}

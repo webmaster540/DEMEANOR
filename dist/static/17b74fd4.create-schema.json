@@ -1,0 +1,273 @@
+[
+  {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "type",
+        "type": "string"
+      },
+      {
+        "name": "max_width",
+        "type": "number"
+      },
+      {
+        "name": "max_frame_rate",
+        "type": "number"
+      },
+      {
+        "name": "duration",
+        "type": "number"
+      },
+      {
+        "name": "max_height",
+        "type": "number"
+      }
+    ],
+    "name": "mux.track",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "policy",
+        "type": "string"
+      }
+    ],
+    "name": "mux.playbackId",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "ext",
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "width",
+        "type": "number"
+      },
+      {
+        "name": "bitrate",
+        "type": "number"
+      },
+      {
+        "name": "filesize",
+        "type": "number"
+      },
+      {
+        "name": "height",
+        "type": "number"
+      }
+    ],
+    "name": "mux.staticRenditionFile",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "mux.staticRenditionFile"
+          }
+        ],
+        "name": "files",
+        "type": "array"
+      }
+    ],
+    "name": "mux.staticRenditions",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "resolution_tier",
+        "type": "string"
+      },
+      {
+        "name": "upload_id",
+        "type": "string"
+      },
+      {
+        "name": "created_at",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "name": "max_stored_resolution",
+        "type": "string"
+      },
+      {
+        "name": "passthrough",
+        "type": "string"
+      },
+      {
+        "name": "encoding_tier",
+        "type": "string"
+      },
+      {
+        "name": "master_access",
+        "type": "string"
+      },
+      {
+        "name": "aspect_ratio",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "type": "number"
+      },
+      {
+        "name": "max_stored_frame_rate",
+        "type": "number"
+      },
+      {
+        "name": "mp4_support",
+        "type": "string"
+      },
+      {
+        "name": "max_resolution_tier",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "mux.track"
+          }
+        ],
+        "name": "tracks",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "mux.playbackId"
+          }
+        ],
+        "name": "playback_ids",
+        "type": "array"
+      },
+      {
+        "name": "static_renditions",
+        "type": "mux.staticRenditions"
+      }
+    ],
+    "name": "mux.assetData",
+    "type": "object",
+    "title": "Mux asset data"
+  },
+  {
+    "fields": [
+      {
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "name": "assetId",
+        "type": "string"
+      },
+      {
+        "name": "playbackId",
+        "type": "string"
+      },
+      {
+        "name": "filename",
+        "type": "string"
+      },
+      {
+        "name": "thumbTime",
+        "type": "number"
+      },
+      {
+        "name": "data",
+        "type": "mux.assetData"
+      }
+    ],
+    "name": "mux.videoAsset",
+    "type": "document",
+    "title": "Video asset"
+  },
+  {
+    "fields": [
+      {
+        "weak": true,
+        "to": [
+          {
+            "type": "mux.videoAsset"
+          }
+        ],
+        "name": "asset",
+        "type": "reference",
+        "title": "Video"
+      }
+    ],
+    "name": "mux.video",
+    "type": "object",
+    "title": "Video asset reference"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "publishedAt",
+        "type": "datetime"
+      },
+      {
+        "name": "thumbnail",
+        "type": "image"
+      },
+      {
+        "name": "video",
+        "type": "mux.video"
+      }
+    ],
+    "name": "post",
+    "type": "document"
+  }
+]
