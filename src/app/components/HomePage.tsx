@@ -21,7 +21,7 @@ export default function HomePage() {
       )}
 
       <main className="relative flex flex-col space-y-4 row-start-2 items-center">
-        <div className="w-10 h-10 z-20">
+        <div className="w-10 h-10 z-20 bg-white rounded-full">
           <Image src={pfp} className="object-cover w-full h-full" alt="profile picture" />
         </div>
         <div onClick={() => setOpenTerminal(true)} className="relative flex gap-4 items-center h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[320px] rounded-full border-2 border-solid border-white/40 bg-[#f2f2f2] transition-colors">
@@ -30,30 +30,16 @@ export default function HomePage() {
             <button onClick={() => setOpenTerminal(false)} className="text-black"><GrFormNext /></button>
           </div>
         </div>
-        <div className="absolute right-2 -bottom-2 text-xs underline text-white">
-            <Link href="/recovery" className="">Recovery password</Link>
-          </div>
+          {/*  <div className="text-xs underline text-white text-right">
+        <Link href="/recovery" className="">Recovery password</Link>
+        </div> */}
       </main>
 
-      {/* TV Static Overlay - No flashing */}
       <TVStatic 
-        intensity={45}
-        className="opacity-30"
+        intensity={40} 
+        flickerSpeed={95}
+        className="opacity-70"
       />
-      
-      {/* Subtle scanlines for realism */}
-      <div className="absolute inset-0 pointer-events-none z-20 opacity-10"
-           style={{
-             backgroundImage: `repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 2px)`,
-           }}>
-      </div>
-      
-      {/* Vignette effect */}
-      <div className="absolute inset-0 pointer-events-none z-30"
-           style={{
-             background: `radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%)`
-           }}>
-      </div>
     </div>
   );
 }
