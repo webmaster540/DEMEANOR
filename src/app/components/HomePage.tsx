@@ -12,7 +12,7 @@ export default function HomePage() {
   const [openTerminal, setOpenTerminal] = useState(false);
 
   return (
-    <div className="font-sans grid content-center min-h-screen p-8 sm:p-20 overflow-hidden bg-pink-400/60">  
+    <div className="font-sans grid content-center min-h-screen p-8 sm:p-20 overflow-hidden bg-black">  
       {openTerminal && (
         <>
           <div className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"></div>
@@ -35,16 +35,23 @@ export default function HomePage() {
           </div>
       </main>
 
-     <TVStatic 
-        intensity={70} 
-        flickerSpeed={80}
-        className="opacity-70"
+      {/* TV Static Overlay - No flashing */}
+      <TVStatic 
+        intensity={45}
+        className="opacity-30"
       />
       
-      {/* Optional scanlines for more realism */}
+      {/* Subtle scanlines for realism */}
       <div className="absolute inset-0 pointer-events-none z-20 opacity-10"
            style={{
-             backgroundImage: `repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px)`,
+             backgroundImage: `repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 2px)`,
+           }}>
+      </div>
+      
+      {/* Vignette effect */}
+      <div className="absolute inset-0 pointer-events-none z-30"
+           style={{
+             background: `radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%)`
            }}>
       </div>
     </div>
