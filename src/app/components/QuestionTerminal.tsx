@@ -153,7 +153,8 @@ const QuestionTerminal: React.FC<QuestionTerminalProps> = ({ setOpenTerminal }) 
                                     newAnswers[currentQuestionIndex] = e.target.value;
                                     setAnswers(newAnswers);
                                 }}
-                                className="pl-1 flex-grow bg-transparent text-white focus:outline-none"
+                                className="pl-1 flex-grow bg-transparent text-white focus:outline-none text-base md:text-lg"
+                                style={{ fontSize: '16px' }}
                             />
                         </div>
                     </form>
