@@ -107,8 +107,6 @@ const QuestionTerminal: React.FC<QuestionTerminalProps> = ({ setOpenTerminal }) 
         }
     };
 
-    // console.log('', answers[currentQuestionIndex])
-
     return (
       <div className="w-[95%] max-w-md h-full max-h-[13.75rem] bg-[#1C1C1C] rounded-2xl fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col">
             {/* Terminal header */}
