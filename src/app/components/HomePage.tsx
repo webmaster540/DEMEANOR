@@ -6,12 +6,13 @@ import pfp from '../../../public/pfp.png';
 import Link from "next/link";
 import { useState } from "react";
 import QuestionTerminal from "./QuestionTerminal";
+import TVStatic from "./TVStatic";
 
 export default function HomePage() {
   const [openTerminal, setOpenTerminal] = useState(false);
 
   return (
-    <div className="font-sans grid content-center min-h-screen p-8 sm:p-20 overflow-hidden">  
+    <div className="font-sans grid content-center min-h-screen p-8 sm:p-20 overflow-hidden bg-pink-400/60">  
       {openTerminal && (
         <>
           <div className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"></div>
@@ -20,20 +21,32 @@ export default function HomePage() {
       )}
 
       <main className="relative flex flex-col space-y-4 row-start-2 items-center">
-        <div className="w-10 h-10">
+        <div className="w-10 h-10 z-20">
           <Image src={pfp} className="object-cover w-full h-full" alt="profile picture" />
         </div>
-        <div onClick={() => setOpenTerminal(true)} className="relative flex gap-4 items-center rounded-full border-2 border-solid border-white/40 bg-[#f2f2f2] transition-colors h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[320px]">
-          <div className="">*****</div>
+        <div onClick={() => setOpenTerminal(true)} className="relative flex gap-4 items-center h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[320px] rounded-full border-2 border-solid border-white/40 bg-[#f2f2f2] transition-colors">
+          <div className="">••••••••</div>
           <div className="absolute right-2 top-1/2 -translate-y-1/2 transform p-1 border-2 border-solid border-black/40 flex items-center rounded-full">
             <button onClick={() => setOpenTerminal(false)} className="text-black"><GrFormNext /></button>
           </div>
-
-          <div className="absolute right-2 top-14 text-right text-xs underline">
+        </div>
+        <div className="absolute right-2 -bottom-2 text-xs underline text-white">
             <Link href="/recovery" className="">Recovery password</Link>
           </div>
-        </div>
       </main>
+
+     <TVStatic 
+        intensity={70} 
+        flickerSpeed={80}
+        className="opacity-70"
+      />
+      
+      {/* Optional scanlines for more realism */}
+      <div className="absolute inset-0 pointer-events-none z-20 opacity-10"
+           style={{
+             backgroundImage: `repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px)`,
+           }}>
+      </div>
     </div>
   );
 }
